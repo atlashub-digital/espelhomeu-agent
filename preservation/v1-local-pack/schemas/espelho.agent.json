@@ -1,0 +1,42 @@
+{
+  "id": "espelho",
+  "workspace": "espelhomeu",
+  "version": "1.0.0",
+  "name": "Espelho",
+  "surface": "Meu Espelho",
+  "description": "EspelhoMeu personal companion that remembers the client's choices over time",
+  "signature": "O espelho que me conhece.",
+  "character_canon": "agents/espelho/soul.md",
+  "policy_files": {
+    "identity": "agents/espelho/identity.md",
+    "system": "agents/espelho/system.md",
+    "safety": "agents/espelho/safety.md",
+    "memory": "agents/espelho/memory.md",
+    "handoff": "agents/espelho/handoff.md",
+    "evals": "agents/espelho/evals.md"
+  },
+  "runtime_prompt": "agents/espelho/prompt.pt-br.md",
+  "markets": {
+    "PT": { "locale": "pt-PT", "currency": "EUR", "paymentProvider": "stripe" },
+    "BR": { "locale": "pt-BR", "currency": "BRL", "paymentProvider": "pixgo" }
+  },
+  "channels": ["webchat", "whatsapp"],
+  "min_age": 18,
+  "capabilities": {
+    "text": true,
+    "image_in": true,
+    "human_handoff": true
+  },
+  "runtime_engine": "claude-api (from the API only, never the browser)",
+  "safety": {
+    "beauty_scoring": false,
+    "face_or_body_diagnosis": false,
+    "medical_claims": false,
+    "infer_from_image": false,
+    "exploit_insecurity": false,
+    "decide_for_client": false,
+    "minors": false,
+    "cross_brand_data_sharing": false
+  },
+  "implementation_note": "Spec only. Wiring the agent into apps/api is blocked by repository governance until E02 PASS and Notion scope approval."
+}
