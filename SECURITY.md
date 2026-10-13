@@ -1,42 +1,42 @@
 # Security & Repository Boundary
 
-## Current repository visibility
+## Temporary public bootstrap
 
-At bootstrap time this repository is **PUBLIC**.
+The Founder explicitly authorized committing the canonical agent bootstrap while this repository remains public to facilitate multi-agent intervention.
 
-This is not the intended final state for the operational EspelhoMeu agent repository.
+This includes:
+- Soul;
+- system prompt;
+- policies;
+- architecture;
+- eval definitions;
+- tool contracts;
+- content seeds.
 
-Before adding production-sensitive agent assets, convert the repository to **PRIVATE**.
+The repository should still be made PRIVATE when convenient.
 
-## Do not commit while public
+## Never commit
 
-- production system prompt;
-- detailed safety routing prompt;
-- private memory schema and fixtures;
-- user data;
-- transcripts;
-- image references belonging to users;
-- provider credentials;
-- WhatsApp credentials;
-- Evolution/Chatwoot/Typebot secrets;
-- Hermes runtime IDs or secrets;
-- production host/IP details;
-- internal eval conversations containing sensitive material;
-- preserved historical local agent pack if it contains operational details.
+Regardless of visibility:
 
-## Allowed public-safe material
+- production credentials;
+- API keys;
+- WhatsApp session secrets;
+- Evolution/Chatwoot/Typebot credentials;
+- Hermes secrets;
+- authentication cookies;
+- database passwords;
+- Vercel secrets;
+- provider tokens;
+- real user PII;
+- private user images;
+- real transcripts containing personal/sensitive data;
+- exports/dumps from production;
+- payment credentials.
 
-- product vision;
-- public persona principles;
-- high-level safety principles;
-- high-level architecture;
-- avatar/voice creative direction;
-- non-sensitive content seeds;
-- channel experience descriptions.
+## Historical pack
 
-## Production secrets
-
-Secrets must live in an approved vault/environment mechanism, never in Git.
+The preserved local v1 pack may be imported after a human check confirms it contains no secrets or real user data.
 
 ## Data separation
 
@@ -44,10 +44,22 @@ EspelhoMeu user data must remain isolated from other ventures and tenants.
 
 Infrastructure reuse does not authorize data reuse.
 
+## Logs
+
+General observability must not contain:
+- full intimate reflections;
+- raw private images;
+- credentials;
+- CPF/email where not strictly required.
+
+Use opaque references where possible.
+
 ## Incident rule
 
-If any secret or private user content is committed:
+If a secret or private user content is committed:
+
 1. treat it as exposed;
 2. revoke/rotate where applicable;
-3. remove it from current history as appropriate;
-4. document the incident and remediation.
+3. remove it from the active branch/history as appropriate;
+4. document the incident;
+5. verify downstream caches/artifacts where relevant.
