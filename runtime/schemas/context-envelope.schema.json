@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlashub.si/schemas/espelhomeu/context-envelope.schema.json",
+  "title": "EspelhoMeu Runtime Context Envelope",
+  "type": "object",
+  "required": ["tenant_id", "channel", "mode", "locale", "conversation"],
+  "properties": {
+    "tenant_id": {
+      "type": "string",
+      "const": "espelhomeu"
+    },
+    "channel": {
+      "type": "string",
+      "enum": ["whatsapp", "webchat", "instagram", "messenger", "internal"]
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["COMMUNITY", "PRIVATE_FREE", "PRIVATE_PRODUCT", "PRIVATE_MEMBER", "HUMAN_HANDOFF"]
+    },
+    "locale": {
+      "type": "string"
+    },
+    "conversation": {
+      "type": "object",
+      "required": ["conversation_id", "scope"],
+      "properties": {
+        "conversation_id": {"type": "string"},
+        "scope": {"type": "string", "enum": ["group", "private", "internal"]},
+        "group_id": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "contact": {
+      "type": ["object", "null"],
+      "properties": {
+        "contact_ref": {"type": "string"},
+        "user_ref": {"type": ["string", "null"]},
+        "preferred_name": {"type": ["string", "null"]},
+        "authenticated": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "consent_scopes": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "entitlements": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "active_product": {
+      "type": ["object", "null"],
+      "properties": {
+        "product_ref": {"type": "string"},
+        "content_type": {"type": "string"},
+        "current_unit_ref": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "progress": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_ref": {"type": "string"},
+          "unit_ref": {"type": ["string", "null"]},
+          "status": {"type": "string"}
+        },
+        "required": ["product_ref", "status"],
+        "additionalProperties": false
+      }
+    },
+    "memory": {
+      "type": "array",
+      "description": "Only policy-selected memory entries.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "memory_id": {"type": "string"},
+          "class": {"type": "string"},
+          "key": {"type": "string"},
+          "value": {},
+          "consent_scope": {"type": ["string", "null"]}
+        },
+        "required": ["memory_id", "class", "key", "value"],
+        "additionalProperties": false
+      }
+    },
+    "risk": {
+      "type": "object",
+      "properties": {
+        "level": {"type": "string", "enum": ["normal", "elevated", "critical"]},
+        "flags": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "required": ["level", "flags"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,37 @@
+version: 1
+tenant: espelhomeu
+
+risk_levels:
+  normal:
+    commerce_allowed: true
+    standard_experience: true
+
+  elevated:
+    commerce_allowed: false
+    simplify_response: true
+    consider_handoff: true
+
+  critical:
+    commerce_allowed: false
+    standard_experience: false
+    safety_path_required: true
+    human_or_emergency_support_priority: true
+
+flags:
+  - medical
+  - recent_procedure
+  - severe_body_image_distress
+  - self_harm
+  - crisis
+  - abuse
+  - minor
+  - privacy
+  - harassment
+  - dependency_language
+  - billing_dispute
+
+rules:
+  vulnerability_commerce_firewall: true
+  crisis_no_promotional_cta: true
+  recent_procedure_no_generic_facial_massage: true
+  group_sensitive_context_to_dm: true

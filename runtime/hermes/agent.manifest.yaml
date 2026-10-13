@@ -1,0 +1,66 @@
+apiVersion: atlashub.ai/v1
+kind: HermesAgentTarget
+metadata:
+  name: espelhomeu
+  displayName: EspelhoMeu
+  tenant: espelhomeu
+  status: design-only
+spec:
+  locale:
+    default: pt-BR
+    supported:
+      - pt-BR
+      - pt-PT
+
+  canon:
+    identity: canon/identity.md
+    soul: canon/soul.md
+    system: canon/system.md
+    safety: canon/safety.md
+    memory: canon/memory.md
+    handoff: canon/handoff.md
+    commerce: canon/commerce.md
+    imageIntake: canon/image-intake.md
+    promptPtBr: canon/prompt.pt-br.md
+
+  modes:
+    - COMMUNITY
+    - PRIVATE_FREE
+    - PRIVATE_PRODUCT
+    - PRIVATE_MEMBER
+    - HUMAN_HANDOFF
+
+  context:
+    schema: runtime/schemas/context-envelope.schema.json
+
+  policies:
+    channel: runtime/policies/channel-policy.yaml
+    memory: runtime/policies/memory-policy.yaml
+    risk: runtime/policies/risk-policy.yaml
+
+  entitlements:
+    registry: runtime/entitlements/entitlements.yaml
+
+  tools:
+    contract: runtime/tools/tool-contracts.md
+
+  channels:
+    whatsapp:
+      spec: runtime/channel-adapters/whatsapp.md
+      enabled: false
+    webchat:
+      enabled: false
+    instagram:
+      enabled: false
+    messenger:
+      enabled: false
+
+  production:
+    enabled: false
+    requires:
+      - canon-approved
+      - evals-pass
+      - tenant-isolation-verified
+      - consent-flows-verified
+      - human-handoff-verified
+      - whatsapp-runtime-verified

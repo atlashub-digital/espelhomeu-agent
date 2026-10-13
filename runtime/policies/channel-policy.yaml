@@ -1,0 +1,50 @@
+version: 1
+tenant: espelhomeu
+
+modes:
+  COMMUNITY:
+    private_memory: false
+    entitlement_disclosure: false
+    private_progress_disclosure: false
+    premium_content: false
+    image_persistence: false
+    commerce_personalized: false
+    proactive_posts: scheduled-only
+    reply_triggers:
+      - direct_mention
+      - direct_reply
+      - explicit_question
+      - moderation
+      - scheduled_editorial
+    dm_transition_for_sensitive_context: true
+
+  PRIVATE_FREE:
+    private_memory: consent-scoped
+    premium_content: false
+    public_samples: true
+    commerce_explanation: true
+    progress_write: public/free-experiences-only
+    image_analysis: consent-scoped
+    image_persistence: explicit-consent-only
+
+  PRIVATE_PRODUCT:
+    private_memory: consent-scoped
+    premium_content: entitlement-scoped
+    progress_write: entitlement-scoped
+    image_analysis: consent-scoped
+    image_persistence: explicit-consent-only
+    commerce_explanation: true
+
+  PRIVATE_MEMBER:
+    private_memory: consent-scoped
+    premium_content: entitlement-scoped
+    progress_write: entitlement-scoped
+    proactive_checkins: opt-in-only
+    image_analysis: consent-scoped
+    image_persistence: explicit-consent-only
+    evolution_timeline: entitlement-and-consent
+    commerce_explanation: true
+
+  HUMAN_HANDOFF:
+    ai_reply: false
+    tool_usage: restricted
