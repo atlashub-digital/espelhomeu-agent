@@ -2,7 +2,32 @@
 
 Canonical repository for the **EspelhoMeu** conversational identity, companion experience and future isolated agent runtime.
 
-> **Security state:** this repository is currently PUBLIC. Until it is converted to PRIVATE, do not commit operational system prompts, private memory schemas, production runtime configuration, credentials, provider IDs, private eval fixtures or the preserved local v1 agent pack.
+## Current repository state
+
+This repository may temporarily remain PUBLIC during the multi-agent bootstrap phase by explicit Founder authorization.
+
+That authorization covers:
+- identity canon;
+- Soul;
+- operational prompts;
+- policies;
+- eval definitions;
+- runtime contracts;
+- content seeds;
+- architecture.
+
+It does **not** authorize committing:
+- credentials;
+- tokens;
+- provider secrets;
+- private endpoints requiring secrecy;
+- production keys;
+- real user data;
+- real conversations containing personal data;
+- private user photos;
+- sensitive operational dumps.
+
+The repository should still be moved to PRIVATE once convenient.
 
 ## Product role
 
@@ -36,15 +61,33 @@ The agent can eventually operate across:
 
 EspelhoMeu is psychology-informed, never beauty-scoring, never diagnostic and never uses vulnerability as a conversion trigger.
 
+## Runtime direction
+
+Target: one isolated **Hermes EspelhoMeu** agent using shared AtlasHub infrastructure while preserving tenant/data isolation.
+
+Hermes is the agent runtime.
+
+Backend services remain authoritative for:
+- identity;
+- consent;
+- entitlements;
+- commerce;
+- progress;
+- private image ownership.
+
 ## Current status
 
 - Product catalogue P01–P05 exists in the EspelhoMeu Golden Pilot.
-- Historical/local agent pack v1.0 was preserved by Operations but is not yet stored here.
-- WhatsApp instance `espelho-wa` exists in infrastructure but is not yet an active EspelhoMeu agent runtime.
-- A new canonical v2 is being designed before any production activation.
+- Historical/local agent pack v1.0 was preserved by Operations outside this repo and must still be imported as immutable history.
+- WhatsApp instance `espelho-wa` exists in infrastructure but was not active at the last audit.
+- Canonical v2 is being defined here before activation.
 
-## Repository roadmap
+## Repository map
 
-See `docs/` for the public-safe foundation.
-
-Operational canon files such as `system.md`, detailed memory policies, handoff policies, eval fixtures and Hermes deployment configuration must only be added after the repository is private.
+- `docs/` — product doctrine and experience design.
+- `canon/` — operational identity, prompts and policies.
+- `runtime/` — Hermes target contracts, policies, schemas and adapters.
+- `evals/` — regression/evaluation scenarios.
+- `seeds/` — reusable editorial/conversational seed libraries.
+- `avatar/` — visual and voice direction.
+- `preservation/` — historical pack import area.
