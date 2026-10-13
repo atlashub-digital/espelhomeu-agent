@@ -1,0 +1,60 @@
+version: 1
+tenant: espelhomeu
+
+entitlements:
+  espelhomeu.product.p01:
+    label: P01 — 7 Dias Para Me Escolher
+    capabilities:
+      - content.p01
+      - progress.p01
+
+  espelhomeu.product.p02:
+    label: P02 — Eu Sou Bela — Do Meu Jeito
+    capabilities:
+      - content.p02
+      - progress.p02
+
+  espelhomeu.product.p03:
+    label: P03 — 21 Dias — Meu Melhor Reflexo
+    capabilities:
+      - content.p03
+      - progress.p03
+
+  espelhomeu.product.p04:
+    label: P04 — Recomeçar Depois dos 40
+    capabilities:
+      - content.p04
+      - progress.p04
+
+  espelhomeu.product.p05:
+    label: P05 — Diário de Amor-Próprio — 30 Encontros Comigo
+    capabilities:
+      - content.p05
+      - progress.p05
+
+  espelhomeu.collection.complete:
+    label: Coleção Completa
+    expands_to:
+      - espelhomeu.product.p01
+      - espelhomeu.product.p02
+      - espelhomeu.product.p03
+      - espelhomeu.product.p04
+      - espelhomeu.product.p05
+
+  espelhomeu.companion.product:
+    label: Acompanhamento de produto
+    capabilities:
+      - companion.product
+
+  espelhomeu.membership.active:
+    label: EspelhoMeu Membership
+    capabilities:
+      - companion.member
+      - memory.enhanced
+      - evolution.timeline
+      - checkins.proactive-opt-in
+
+notes:
+  - Pricing does not belong in this registry.
+  - Commerce backend is authoritative for active offers and entitlement grants.
+  - Runtime must expand bundle/collection entitlements server-side.
