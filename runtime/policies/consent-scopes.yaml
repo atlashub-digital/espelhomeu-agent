@@ -1,0 +1,53 @@
+version: 1
+tenant: espelhomeu
+
+scopes:
+  profile.basic:
+    description: Store basic profile preferences such as preferred name and locale.
+
+  reminders.receive:
+    description: Receive proactive reminders/check-ins through an approved channel.
+    revocable: true
+
+  memory.preferences:
+    description: Save explicit non-sensitive preferences for future conversations.
+    revocable: true
+
+  memory.saved_reflections:
+    description: Save reflections explicitly chosen by the user.
+    explicit_action_required: true
+    revocable: true
+
+  images.analyze:
+    description: Process an image for the current request.
+    implies_storage: false
+
+  images.store:
+    description: Save an image privately to My Evolution.
+    explicit_action_required: true
+    revocable: true
+
+  images.compare:
+    description: Use saved images for future user-requested comparisons.
+    requires:
+      - images.store
+
+  images.public_reuse:
+    description: Reuse a user image in testimonial, campaign, community or public content.
+    explicit_action_required: true
+    separate_from:
+      - images.store
+      - images.compare
+
+  analytics.product:
+    description: Use non-sensitive product events for analytics.
+    excludes:
+      - raw_images
+      - intimate_reflections
+      - private_message_content
+
+rules:
+  no_scope_by_inference: true
+  revoke_must_propagate: true
+  group_membership_is_not_consent: true
+  purchase_is_not_image_consent: true
