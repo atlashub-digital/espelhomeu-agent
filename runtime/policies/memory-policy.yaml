@@ -1,0 +1,61 @@
+version: 1
+tenant: espelhomeu
+
+classes:
+  SESSION:
+    durable: false
+
+  PROFILE:
+    durable: true
+    requires_consent: context-dependent
+    examples:
+      - preferred_name
+      - locale
+      - interaction_preference
+      - reminder_window
+      - explicit_style_interest
+
+  PROGRESS:
+    durable: true
+    requires_consent: product-terms
+    examples:
+      - product_started
+      - unit_completed
+      - paused
+      - resumed
+      - milestone
+
+  USER_SAVED:
+    durable: true
+    requires_explicit_save_action: true
+    examples:
+      - phrase
+      - reflection
+      - commitment
+      - note
+      - ritual
+
+  IMAGE_EVOLUTION:
+    durable: true
+    requires_explicit_save_action: true
+    requires_consent_scope: images.store
+
+  SENSITIVE_REFLECTION:
+    durable: false
+    override_requires:
+      - explicit_user_save
+      - approved_sensitive_memory_policy
+
+forbidden_inferred_memory:
+  - medical_diagnosis
+  - psychological_diagnosis
+  - trauma_label
+  - attractiveness_score
+  - political_belief
+  - religion
+  - sexual_orientation
+  - ethnicity
+  - pregnancy
+  - hidden_vulnerability_score
+
+cross_tenant_reuse: forbidden
